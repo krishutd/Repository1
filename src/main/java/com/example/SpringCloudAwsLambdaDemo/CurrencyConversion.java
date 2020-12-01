@@ -6,6 +6,8 @@ import com.example.SpringCloudAwsLambdaDemo.dto.ExchangeRateResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 @Component
 public class CurrencyConversion {
 
@@ -22,7 +24,8 @@ public class CurrencyConversion {
     }
 
     public String getQueryStringParameter(APIGatewayProxyRequestEvent inputEvent, String queryParameter) {
-        return inputEvent.getQueryStringParameters().get(queryParameter);
+        Map<String,String> parameters = inputEvent.getQueryStringParameters();
+        return parameters.get(queryParameter);
     }
 
 }
